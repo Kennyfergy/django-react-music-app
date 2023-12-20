@@ -4,18 +4,23 @@ body {
   margin: 0;
   padding: 0;
   /* color: white; */
+  background-color: rgb(76, 133, 101);
 }
 
 #main {
-  position: fixed;
-  width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
+  width: 100%;
 }
 
 #app {
-  width: 100%;
   height: 100%;
-  display: flex;
+  width: 100%;
+}
+
+.center {
+  display: flex; /* Using Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Full height of its container */
+  width: 100%; /* Full width of its container */
 }

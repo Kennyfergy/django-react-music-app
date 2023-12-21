@@ -47,26 +47,21 @@ def is_spotify_authenticated(session_id):
 
 
 def refresh_spotify_token(session_id):
-    tokens = get_user_tokens(session_id)
-    
-    if tokens and tokens.refresh_token:
-        response = post('https://accounts.spotify.com/api/token', data={
-            'grant_type': 'refresh_token',
-            'refresh_token': tokens.refresh_token,
-            'client_id': CLIENT_ID,
-            'client_secret': CLIENT_SECRET
-        }).json()
+    refresh_token = get_user_tokens(session_id).refresh_token
 
-        access_token = response.get('access_token')
-        token_type = response.get('token_type')
-        expires_in = response.get('expires_in')
-        new_refresh_token = response.get('refresh_token') or tokens.refresh_token
+    response = post('https://accounts.spotify.com/api/token', data={
+        'grant_type': 'refresh_token',
+        'refresh_token': refresh_token,
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET
+    }).json()
 
-        update_or_create_user_tokens(session_id, access_token, token_type, expires_in, new_refresh_token)
-    else:
-        # Handle the scenario where refresh token is not available
-        # You might want to raise an exception, log an error, or handle this case accordingly
-        print("Refresh token is not available")
+    access_token = response.get('access_token')
+    token_type = response.get('token_type')
+    expires_in = response.get('expires_in')
+
+    update_or_create_user_tokens(
+        session_id, access_token, token_type, expires_in, refresh_token)
 
 
 def execute_spotify_api_request(session_id, endpoint, post_=False, put_=False):
@@ -84,3 +79,11 @@ def execute_spotify_api_request(session_id, endpoint, post_=False, put_=False):
         return response.json()
     except:
         return {'Error': 'Issue with request'}
+
+
+def play_song(session_id):
+    return execute_spotify_api_request(session_id, "player/play", put_=True)
+
+
+def pause_song(session_id):
+    return execute_spotify_api_request(session_id, "player/pause", put_=True)

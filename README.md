@@ -48,12 +48,12 @@ On Mac:
 
 This app does have a dynamic gradient background with randomized colors so the colors may vary.
 
-![Home Page](./images/HomePage.png "Home Page")
-![Create Info](./images/AboutCreate.png "Create Info")
-![Join Info](./images/AboutJoin.png "Join Info")
-![Create Room](./images/Create.png "Create Room")
-![Join a Room](./images/Join.png "Join a Room")
-![Room View](./images/Room.png "Room View")
+![Home Page](./music_controller/images/HomePage.png "Home Page")
+![Create Info](./music_controller/images/AboutCreate.png "Create Info")
+![Join Info](./music_controller/images/AboutJoin.png "Join Info")
+![Create Room](./music_controller/images/Create.png "Create Room")
+![Join a Room](./music_controller/images/Join.png "Join a Room")
+![Room View](./music_controller/images/Room.png "Room View")
 
 ## Contact
 

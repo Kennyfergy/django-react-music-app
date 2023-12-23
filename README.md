@@ -1,3 +1,4 @@
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/Kennyfergy/django-react-music-app)
 # Spotify Party App
 
 ## Description
